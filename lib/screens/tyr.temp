@@ -1,0 +1,37 @@
+ Widget buildResults(BuildContext context) {
+   return ValueListenableBuilder(
+     valueListenable: studentListNotifier,
+      builder: (BuildContext context, List<StudentModel> studentData, Widget? child){
+        return ListView.separated(
+          itemBuilder: (ctx, index) {
+            final data =studentData[index];
+            if (query == data.name!.toLowerCase()||query==data.name!.toUpperCase()){
+              return ListTile(
+                leading: const Icon(Icons.person),
+                      onTap: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                            (MaterialPageRoute(builder: (ctx) {
+                              return ProfileDetails(studentData: data, index: index) ;
+                            })),
+                            (route) => false);
+                      },
+                      title: Text(
+                        data.name.toString(),
+                        style: const TextStyle(
+                          fontSize: 20,
+                        )
+                      )
+              );
+            }else{
+               return Container();
+            }
+          }, 
+          
+          separatorBuilder: (context,value){
+            return const SizedBox(height:0,width: 0,);
+          }, 
+          itemCount: studentData.length,
+          );
+      }
+      );
+  }
