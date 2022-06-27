@@ -20,7 +20,7 @@ class SettingsScreen extends StatefulWidget {
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
-ValueNotifier<bool>notificationListener = ValueNotifier(false);
+ValueNotifier<bool> notificationListener = ValueNotifier(false);
 
 class _SettingsScreenState extends State<SettingsScreen> {
   String title = 'Clear all Data ';
@@ -31,8 +31,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-      SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor:Colors.black, systemNavigationBarColor: Colors.black));
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: Colors.black, systemNavigationBarColor: Colors.black));
     return SafeArea(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -40,7 +40,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const Text(
             'Settings',
             style: TextStyle(
-                fontSize: 22, letterSpacing: 5, fontWeight: FontWeight.w600),
+                fontSize: 26, letterSpacing: 4, fontWeight: FontWeight.w600),
           ),
           const SizedBox(
             height: 50,
@@ -74,7 +74,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             ),
                             Expanded(
                               child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   TextButton(
                                       onPressed: () async {},
@@ -83,17 +84,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                               color: Color(0xff51425f),
                                               fontSize: 18,
                                               letterSpacing: 1))),
-                                              ValueListenableBuilder(
-                                                valueListenable: notificationListener,
-                                                builder: (BuildContext context, bool value, Widget?_)
-                                                {
-                                                  return  Switch(
-                                                  value: value, 
-                                                  onChanged:(newValue){notificationAdd(newValue);}
-                                                  );
-                                                },
-                                               
-                                                  )
+                                  ValueListenableBuilder(
+                                    valueListenable: notificationListener,
+                                    builder: (BuildContext context, bool value,
+                                        Widget? _) {
+                                      return Switch(
+                                          value: value,
+                                          onChanged: (newValue) {
+                                            notificationAdd(newValue);
+                                          });
+                                    },
+                                  )
                                 ],
                               ),
                             )
@@ -235,10 +236,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     height: 10,
                   ),
                   InkWell(
-                    onTap: () {showDialog(
-                                        context: context,
-                                        builder: (context) =>
-                                            aboutShow(context));},
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) => aboutShow(context));
+                    },
                     child: Card(
                         elevation: 7,
                         color: const Color.fromARGB(255, 194, 191, 196),
@@ -477,6 +479,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       throw 'Could not launch';
     }
   }
+
   notificationAdd(valueX) async {
     if (valueX == true) {
       await createPersistentNotification();
@@ -485,7 +488,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
     final shared = await SharedPreferences.getInstance();
     await shared.setBool("notification", valueX);
-   notificationListener.value = valueX;
-   notificationListener.notifyListeners();
-   }
+    notificationListener.value = valueX;
+    notificationListener.notifyListeners();
+  }
 }

@@ -99,7 +99,7 @@ class _TransactionsState extends State<Transactions>
                   child: Text(
                     'EveryRupee',
                     style: TextStyle(
-                        fontSize: 34,
+                        fontSize: 32,
                         fontFamily: 'Trajan',
                         fontWeight: FontWeight.w800,
                         color: Color(0xff480048),

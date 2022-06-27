@@ -149,7 +149,7 @@ class _CategoryScreenState extends State<CategoryScreen>
                             FocusScope.of(context).unfocus();
                             final _name = _nameEditingController.text;
                             if (_name.isEmpty) {
-                              return;
+                              return pop();
                             } else {
                               final _category = CategoryModel(
                                   id: DateTime.now()
@@ -329,7 +329,7 @@ class _CategoryScreenState extends State<CategoryScreen>
                             FocusScope.of(context).unfocus();
                             final _name = _nameEditingController.text;
                             if (_name.isEmpty) {
-                              return;
+                              return pop();
                             } else {
                               final _category = CategoryModel(
                                   id: DateTime.now()
@@ -586,5 +586,16 @@ class _CategoryScreenState extends State<CategoryScreen>
         ),
       ],
     );
+  }
+  void pop() {
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        duration: Duration(milliseconds: 600),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Color.fromARGB(255, 215, 6, 6),
+        margin: EdgeInsets.all(20),
+        content: Text(
+          'Make a category name first',
+          style: TextStyle(letterSpacing: 2),
+        )));
   }
 }

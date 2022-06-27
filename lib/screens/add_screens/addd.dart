@@ -66,37 +66,40 @@ class _AdTransactionState extends State<AdTransaction>
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * .24,
-                  child: Stack(children: [
-                    Image.asset(
-                      'assets/images/add_trans_image.png',
-                      height: MediaQuery.of(context).size.height * .14,
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 55, left: 90),
-                      child: Text(
-                        'Add\n Transactions',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 35,
-                            fontFamily: 'Trajan',
-                            fontWeight: FontWeight.w900,
-                            color: Color(0xff480048),
-                            letterSpacing: 5),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12,right: 12,top: 5),
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height * .24,
+                    child: Stack(children: [
+                      Image.asset(
+                        'assets/images/add_trans_image.png',
+                        height: MediaQuery.of(context).size.height * .14,
                       ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 135, left: 150),
-                      child: Text(
-                        'Add the latest transaction.',
-                        style: TextStyle(
-                            color: Colors.grey,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 1),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 55, left: 90),
+                        child: Text(
+                          'Add\n Transactions',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 35,
+                              fontFamily: 'Trajan',
+                              fontWeight: FontWeight.w900,
+                              color: Color(0xff480048),
+                              letterSpacing: 5),
+                        ),
                       ),
-                    )
-                  ]),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 135, left: 150),
+                        child: Text(
+                          'Add the latest transaction.',
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: 1),
+                        ),
+                      )
+                    ]),
+                  ),
                 ),
               ],
             ),
